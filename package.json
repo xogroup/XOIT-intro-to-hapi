@@ -1,0 +1,35 @@
+{
+  "name": "xoit-intro-to-hapi",
+  "version": "1.0.0",
+  "description": "XOIT Session - Intro to hapi.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "lab -t 95 -a code -L",
+    "start": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xogroup/XOIT-intro-to-hapi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xogroup/XOIT-intro-to-hapi/issues"
+  },
+  "homepage": "https://github.com/xogroup/XOIT-intro-to-hapi#readme",
+  "dependencies": {
+    "boom": "^5.2.0",
+    "hapi": "^16.5.2",
+    "hapi-swagger": "^7.7.1",
+    "hoek": "^4.2.0",
+    "inert": "^4.2.1",
+    "joi": "^10.6.0",
+    "uuid": "^3.1.0",
+    "vision": "^4.1.1"
+  },
+  "devDependencies": {
+    "felicity": "^2.2.4",
+    "lab": "^14.2.1",
+    "superagent": "^3.6.0"
+  }
+}

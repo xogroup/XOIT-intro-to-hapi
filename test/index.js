@@ -50,35 +50,7 @@ describe('Server', () => {
             Superagent.post('localhost:8000/todo')
                 .end((err, res) => {
 
-                    expect(err.message).to.not.equal('Not Found');
                     expect(res.statusCode).to.not.equal(404);
-
-                    done();
-                });
-        });
-
-        it('should reply with 401 on missing Authentication header', (done) => {
-
-            Superagent.post('localhost:8000/todo')
-                .send({ title: 'Item 1' })
-                .end((err, res) => {
-
-                    expect(err.message).to.equal('Unauthorized');
-                    expect(res.statusCode).to.equal(401);
-
-                    done();
-                });
-        });
-
-        it('should reply with 401 on invalid Authentication header', (done) => {
-
-            Superagent.post('localhost:8000/todo')
-                .send({ title: 'Item 1' })
-                .set('Authentication', 'DefinitelyNotAGuid')
-                .end((err, res) => {
-
-                    expect(err.message).to.equal('Unauthorized');
-                    expect(res.statusCode).to.equal(401);
 
                     done();
                 });

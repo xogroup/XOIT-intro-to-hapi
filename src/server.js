@@ -2,7 +2,6 @@
 
 const Hapi = require('hapi');
 
-const AuthenticationScheme = require('./auth/authenticationScheme');
 const Handlers = require('./handlers');
 const Helpers = require('./helpers');
 
@@ -12,9 +11,6 @@ const server = new Hapi.Server();
 
 // Set Connection
 server.connection({ port });
-
-// Register Authentication scheme
-// Then use it to register an Authentication strategy
 
 // Register Routes
 server.route({
@@ -29,16 +25,12 @@ server.route({
     handler: Handlers.helloWorld
 });
 
-// Add your auth scheme to the route config
+// Add your payload validation to the route config
 server.route({
     method: 'POST',
     path: '/todo',
     handler: Handlers.postItem,
-    config: {
-        validate: {
-            payload: Helpers.joiSchemas.postItemSchema
-        }
-    }
+    config: {}
 });
 
 // Start server if not being require()'ed

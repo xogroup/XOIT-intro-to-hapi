@@ -1,7 +1,6 @@
 'use strict';
 
 const Hapi = require('hapi');
-// Require additional libraries here
 
 const AuthenticationScheme = require('./auth/authenticationScheme');
 const Handlers = require('./handlers');
@@ -24,16 +23,11 @@ for (const method in ServerMethods) {
     server.method(method, ServerMethods[method], { callback: false });
 }
 
-// Register Plugins here
-// Inert, Vision, and HapiSwagger are all for registering the "/documentation" route on the server.
-
-
 // Register Routes
 server.route({
     method: 'GET',
     path: '/',
-    handler: Handlers.home,
-    config: {}
+    handler: Handlers.home
 });
 
 server.route({

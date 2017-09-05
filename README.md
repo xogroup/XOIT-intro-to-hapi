@@ -1,20 +1,16 @@
 # XOIT - Intro to hapi.js
 
 ## Next Step
-Now that your test suite is finished, and you've set up your API routes, let's take a look at some community plugins to generate some Swagger documentation for your shiny new server.
+Let's utilize Joi to validate more than just a request.
 
-Use npm to `npm install --save hapi-swagger inert vision` to add the packages to your project.
+We know what data is coming IN to our POST route, but what if we are utilizing that data to hydrate a more complicated model, including private information that we don't want to be exposing to the outside world??
 
-Next, `require` those three modules into your `server.js` and utilize hapi's [plugin registration api](https://github.com/hapijs/hapi/blob/master/API.md#serverregisterplugins-options-callback) to set them up on your server.
+We can take advantage of the [options](https://github.com/hapijs/joi/blob/master/API.md#anyoptionsoptions) feature of Joi to `stripUnknown` and ensure that we are only sending back the exact set of properties that we *choose* to reply with.
 
-Here's what each of the three is doing for us:
-1. [inert](https://github.com/hapijs/inert) - Handles serving up static files and directories.
-2. [vision](https://github.com/hapijs/vision) - Renders templated views to be served up as static files.
-3. [hapi-swagger](https://github.com/glennjones/hapi-swagger) - Compiles route-specific information from your server and generates a templated view to be served up by vision/inert.
 
-Now that the plugins are registered, we need to provide hapi-swagger with the information about our routes.
-On each route declaration, add the `description` and `tags` config properties.
-Then, `npm start` your server and visit `localhost:8000/documentation` to check out your Swagger documentation!
+First, create a new Joi schema that models the response that you expect to send back. In this case, it will probably look a lot like your request schema; we just want to make sure we aren't sending back any private info, like some `privateIdentifier`s!
+
+Then, head over to your `postItem.js` handler and add some Joi validation to strip the extra keys off of your result object; use that to send back to the client.
 
 ## Solution
-Go ahead and `git checkout 4a74ee745` to see how I chose to complete this step.
+Go ahead and `git checkout 5a13dd85` to see how I chose to complete this step and to see what comes next!

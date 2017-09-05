@@ -1,7 +1,7 @@
 'use strict';
 
 const Hoek = require('hoek');
-const Helpers = require('../helpers');
+// require new modules here, like your ../helpers index ;)
 
 const defaultItem = {
     privateIdentifier: 'Ay_No_This_Is_A_Secret'
@@ -16,8 +16,8 @@ module.exports = function (request, reply) {
     return request.server.methods.save(result)
         .then(() => {
 
-            const responseValidation = Helpers.joiSchemas.responseSchema.validate(result);
+            // Use a Joi schema in your helper file to stripUnknown keys from your result before replying!
 
-            return reply(responseValidation.value).code(201);
+            return reply(/*validation result*/).code(201);
         });
 };

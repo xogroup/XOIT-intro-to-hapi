@@ -8,7 +8,8 @@ module.exports = (server, options) => {
     return {
         authenticate: function (request, reply) {
 
-            const token = request.headers.authentication;
+            // hapi automatically parses headers into the request.headers object
+            // use it to retrieve the 'authentication' token
 
             if (!token) {
                 return reply(Boom.unauthorized());

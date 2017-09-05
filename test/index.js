@@ -2,7 +2,6 @@
 
 const Lab = require('lab');
 const Superagent = require('superagent');
-const Uuid = require('uuid');
 const Server = require('../src/server');
 
 const lab = exports.lab = Lab.script();
@@ -56,30 +55,15 @@ describe('Server', () => {
                 });
         });
 
-        it('should reply with 400 on invalid payload', (done) => {
-
-            Superagent.post('localhost:8000/todo')
-                .send({ name: 'Felix', species: 'cat' })
-                .set('Authentication', Uuid.v4())
-                .end((err, res) => {
-
-                    expect(err.message).to.equal('Bad Request');
-                    expect(res.statusCode).to.equal(400);
-
-                    done();
-                });
-        });
-
         it('should reply with the new TODO item', (done) => {
 
             Superagent.post('localhost:8000/todo')
                 .send({ title: 'Item 1' })
-                .set('Authentication', Uuid.v4())
                 .end((err, res) => {
 
                     expect(err).to.be.null();
                     expect(res.statusCode).to.equal(201);
-                    expect(res.body).to.equal({ title: 'Item 1', isComplete: false });
+                    expect(res.body).to.equal({ title: 'Item 1' });
 
                     done();
                 });

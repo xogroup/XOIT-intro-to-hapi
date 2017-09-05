@@ -3,7 +3,6 @@
 const Hapi = require('hapi');
 
 const Handlers = require('./handlers');
-const Helpers = require('./helpers');
 
 const port = process.env.port || 8000;
 
@@ -21,17 +20,10 @@ server.route({
 
 server.route({
     method: 'GET',
-    path: '/hello',
-    handler: Handlers.helloWorld
+    path: '/hello'
 });
 
-// Add your payload validation to the route config
-server.route({
-    method: 'POST',
-    path: '/todo',
-    handler: Handlers.postItem,
-    config: {}
-});
+// Add a POST /todo route, and hook up the 'postItem' handler
 
 // Start server if not being require()'ed
 if (!module.parent) {

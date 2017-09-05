@@ -3,7 +3,6 @@
 module.exports = function (request, reply) {
 
     // hapi automatically parses the request body into "request.payload"
-    const result = request.payload;
 
-    return reply(result).code(201);
+    return reply(/*response data*/).code(/*integer HTTP status code*/);
 };

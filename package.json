@@ -4,7 +4,7 @@
   "description": "XOIT Session - Intro to hapi.js",
   "main": "index.js",
   "scripts": {
-    "test": "lab -t 95 -a code -L",
+    "test": "lab -t 95 -a code",
     "start": "node src/server.js"
   },
   "repository": {

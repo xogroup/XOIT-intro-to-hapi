@@ -20,7 +20,7 @@ server.auth.strategy('defaultScheme', 'authScheme');
 
 // Register Sever Methods
 for (const method in ServerMethods) {
-    server.method(method, ServerMethods[method], { callback: false });
+    // Use the server method api to register each server method here
 }
 
 // Register Routes

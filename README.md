@@ -1,17 +1,20 @@
 # XOIT - Intro to hapi.js
 
-## Final Step
-That's it! You now have a basic server listening on your specified port, complete with authentication and server methods!
+## Next Step
+Now that your test suite is finished, and you've set up your API routes, let's take a look at some community plugins to generate some Swagger documentation for your shiny new server.
 
-## Further Reading
-This session has only just scratched the surface of the [hapi.js](https://github.com/hapijs/hapi/blob/master/API.md) API. Some of the more common features we did not cover include:
-  - [Route Prerequisites](https://github.com/hapijs/hapi/blob/master/API.md#route-prerequisites)
-  - [Server Extension Points](https://github.com/hapijs/hapi/blob/master/API.md#serverextevents)
-  - [Plugin Registrations Using Glue](https://github.com/hapijs/glue/blob/master/API.md)
-  - Many other community-sourced tutorials and plugins can be found on the [hapi.js website](https://hapijs.com/tutorials)
+Use npm to `npm install --save hapi-swagger inert vision` to add the packages to your project.
 
+Next, `require` those three modules into your `server.js` and utilize hapi's [plugin registration api](https://github.com/hapijs/hapi/blob/master/API.md#serverregisterplugins-options-callback) to set them up on your server.
 
-Also be sure to join us in the public [Hapi Hour Slack Channel](https://t.co/RLLcGIGmRZ) to talk all things hapi!
+Here's what each of the three is doing for us:
+1. [inert](https://github.com/hapijs/inert) - Handles serving up static files and directories.
+2. [vision](https://github.com/hapijs/vision) - Renders templated views to be served up as static files.
+3. [hapi-swagger](https://github.com/glennjones/hapi-swagger) - Compiles route-specific information from your server and generates a templated view to be served up by vision/inert.
 
-Another great way to learn more is to get your hands dirty. Watch the repo and see if you can answer [new issues](https://github.com/hapijs/discuss/issues) faster than the maintainers!
-It's a great way to learn, even if it takes you weeks to find the first issue you can answer at all! I promise you will learn something interesting!
+Now that the plugins are registered, we need to provide hapi-swagger with the information about our routes.
+On each route declaration, add the `description` and `tags` config properties.
+Then, `npm start` your server and visit `localhost:8000/documentation` to check out your Swagger documentation!
+
+## Solution
+Go ahead and `git checkout 4a74ee745` to see how I chose to complete this step.

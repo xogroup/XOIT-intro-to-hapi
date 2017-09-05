@@ -1,9 +1,7 @@
 'use strict';
 
 const Hapi = require('hapi');
-const HapiSwagger = require('hapi-swagger');
-const Inert = require('inert');
-const Vision = require('vision');
+// Require additional libraries here
 
 const AuthenticationScheme = require('./auth/authenticationScheme');
 const Handlers = require('./handlers');
@@ -26,31 +24,22 @@ for (const method in ServerMethods) {
     server.method(method, ServerMethods[method], { callback: false });
 }
 
-// Register Plugins
+// Register Plugins here
 // Inert, Vision, and HapiSwagger are all for registering the "/documentation" route on the server.
-server.register(Inert, () => {});
-server.register(Vision, () => {});
-server.register(HapiSwagger, () => {});
+
 
 // Register Routes
 server.route({
     method: 'GET',
     path: '/',
     handler: Handlers.home,
-    config: {
-        description: 'Celebrate',
-        tags: ['api']
-    }
+    config: {}
 });
 
 server.route({
     method: 'GET',
     path: '/hello',
-    handler: Handlers.helloWorld,
-    config: {
-        description: 'Hello World',
-        tags: ['api']
-    }
+    handler: Handlers.helloWorld
 });
 
 server.route({
@@ -58,8 +47,6 @@ server.route({
     path: '/todo',
     handler: Handlers.postItem,
     config: {
-        description: 'Post a TODO item',
-        tags: ['api'],
         validate: {
             payload: Helpers.joiSchemas.postItemSchema
         },

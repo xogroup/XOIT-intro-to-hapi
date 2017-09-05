@@ -28,45 +28,4 @@ describe('Server', () => {
                 done();
             });
     });
-
-    it('should have a GET /hello endpoint', (done) => {
-
-        Superagent.get('localhost:8000/hello')
-            .end((err, res) => {
-
-                expect(err).to.be.null();
-                expect(res.statusCode).to.equal(200);
-                expect(res.text).to.equal('World');
-
-                done();
-            });
-    });
-
-    describe('POST /todo', () => {
-
-        it('should have a POST /todo endpoint', (done) => {
-
-            Superagent.post('localhost:8000/todo')
-                .end((err, res) => {
-
-                    expect(res.statusCode).to.not.equal(404);
-
-                    done();
-                });
-        });
-
-        it('should reply with the new TODO item', (done) => {
-
-            Superagent.post('localhost:8000/todo')
-                .send({ title: 'Item 1' })
-                .end((err, res) => {
-
-                    expect(err).to.be.null();
-                    expect(res.statusCode).to.equal(201);
-                    expect(res.body).to.equal({ title: 'Item 1' });
-
-                    done();
-                });
-        });
-    });
 });

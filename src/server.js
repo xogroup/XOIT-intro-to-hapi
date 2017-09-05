@@ -6,31 +6,18 @@ const Handlers = require('./handlers');
 
 const port = process.env.port || 8000;
 
-const server = new Hapi.Server();
+// Instantiate a new server object
 
-// Set Connection
-server.connection({ port });
+// Set a connection on your server
 
-// Register Routes
 server.route({
     method: 'GET',
     path: '/',
     handler: Handlers.home
 });
 
-server.route({
-    method: 'GET',
-    path: '/hello'
-});
-
-// Add a POST /todo route, and hook up the 'postItem' handler
-
 // Start server if not being require()'ed
-if (!module.parent) {
-    server.start(() => {
-        console.log(`Server started. Listening on port:${port}`)
-    });
-}
+if (!module.parent) {}
 
 // Expose server
 module.exports = server;

@@ -4,7 +4,7 @@
   "description": "XOIT Session - Intro to hapi.js",
   "main": "index.js",
   "scripts": {
-    "test": "lab -t 95 -a code",
+    "test": "lab -a code",
     "start": "node src/server.js"
   },
   "repository": {
@@ -18,14 +18,9 @@
   },
   "homepage": "https://github.com/xogroup/XOIT-intro-to-hapi#readme",
   "dependencies": {
-    "boom": "^5.2.0",
-    "hapi": "^16.5.2",
-    "hoek": "^4.2.0",
-    "joi": "^10.6.0",
-    "uuid": "^3.1.0"
+    "hapi": "^16.5.2"
   },
   "devDependencies": {
-    "felicity": "^2.2.4",
     "lab": "^14.2.1",
     "superagent": "^3.6.0"
   }
